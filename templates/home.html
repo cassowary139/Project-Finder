@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Quanta</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link href="https://fonts.googleapis.com/css?family=Jura|Pacifico|Poiret+One|Quicksand|Righteous|Rosario|Sacramento|VT323" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jura|Poiret+One|Quicksand|Righteous|Rosario|VT323" rel="stylesheet">    <link href="https://fonts.googleapis.com/css?family=Audiowide|Julius+Sans+One|Montserrat|Notable|Orbitron|Oxygen|Righteous" rel="stylesheet">
+    <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/styles/style.css')}}">
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Julius+Sans+One|Montserrat|Notable|Orbitron|Oxygen|Righteous" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/styles/style.css') }}">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    
+
+  </head>
+  <body>
+  <script>
+    $(document).ready(function() {
+    // show the alert
+    setTimeout(function() {
+        $(".alert").alert('close');
+    }, 2000);
+});
+  </script>
+ <div class = "container1" class = "class1">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div id = "flash"class="alert alert-dismissible flashalert" role="alert">
+        <button style="color:white;"type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        {{message}}
+        </div>
+      {% endfor %}
+      {% endif %}
+    {% endwith %}
+     {% block body %}{% endblock %}
+      <script>
+        $(window).on('load', function(){
+            if( {{ var1 }}==1){
+            $('#myModal').modal('show');
+            }
+        });
+    </script>
+  </div>
+    <script type="text/javascript">
+  window.smoothScroll = function(target) {
+      var scrollContainer = target;
+      do { //find scroll container
+          scrollContainer = scrollContainer.parentNode;
+          if (!scrollContainer) return;
+          scrollContainer.scrollTop += 1;
+      } while (scrollContainer.scrollTop == 0);
+  
+      var targetY = 0;
+      do { //find the top of target relatively to the container
+          if (target == scrollContainer) break;
+          targetY += target.offsetTop;
+      } while (target = target.offsetParent);
+  
+      scroll = function(c, a, b, i) {
+          i++; if (i > 30) return;
+          c.scrollTop = a + (b - a) / 30 * i;
+          setTimeout(function(){ scroll(c, a, b, i); }, 20);
+      }
+      // start scrolling
+      scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+  }
+  </script>
+      <script>
+        $(window).on('load', function(){
+            if( {{ var1 }}==1){
+            $('#myModal').modal('show');
+            }
+        });
+    </script>
+
+
+
+    <div id = "particles-js">
+
+      <div class = "nav" >
+        <form class = "login"action = "/login" method = "POST" name = "login_form">
+        <input class="me_email"type = "email" placeholder = "Email" name = "email">
+        <input class = "me_pass"type = "password" placeholder = "Password" name = "pass">
+        <input class= "me_sub" type = "submit" value = "Login">
+
+        
+        </form>
+        
+          <button id = "showModal" class="regbutton" >Register</button> <!--my register  modal button-->
+        
+        
+        
+
+
+      </div>
+
+
+
+  <div class = "container" id = "regform">
+    <div class="modal">
+        <div class="modal-background" style = "background-color: rgba(0,0,0,.7)"></div>
+        <div class="modal-card">
+          <header class="modal-card-head" style= "background-color:#c5b2c4db;">
+            <p class="formheadtext" style = "margin-left:5%;color:white;text-shadow: 4px 4px 4px #795880;">Register</p> 
+            <button style = "margin-left:60%;max-height:30px;min-height:30px; max-width:30px;min-width:30px;"class="delete" aria-label="close"></button>
+          </header>
+          <section style="background-color:#67446ddb;padding:30px;"class="modal-card-body">
+            <!-- Content ... -->
+            <script type="text/javascript">
+
+              function checkForm(form)
+              {
+                if(form.fname.value == "") {
+                  alert("Error: First name cannot be blank!");
+                  form.username.focus();
+                  return false;
+                }
+                if(form.lname.value == "") {
+                  alert("Error: Last name cannot be blank!");
+                  form.username.focus();
+                  return false;
+                }
+                re = /^\w+$/;
+                if(!re.test(form.fname.value)) {
+                  alert("Error: First name must contain only letters, numbers and underscores!");
+                  form.username.focus();
+                  return false;
+                }
+                if(!re.test(form.lname.value)) {
+                  alert("Error: Last name must contain only letters, numbers and underscores!");
+                  form.username.focus();
+                  return false;
+                }
+    
+                if(form.pass.value != "" && form.pass.value == form.confirm.value) {
+                  if(form.pass.value.length < 7) {
+                    alert("Error: Password must contain at least seven characters!");
+                    form.pass.focus();
+                    return false;
+                  }
+                  if(form.pass.value == form.fname.value) {
+                    alert("Error: Password must be different from Username!");
+                    form.pass.focus();
+                    return false;
+                  }
+                  re = /[0-9]/;
+                  if(!re.test(form.pass.value)) {
+                    alert("Error: password must contain at least one number (0-9)!");
+                    form.pass.focus();
+                    return false;
+                  }
+                  re = /[a-z]/;
+                  if(!re.test(form.pass.value)) {
+                    alert("Error: password must contain at least one lowercase letter (a-z)!");
+                    form.pass.focus();
+                    return false;
+                  }
+              
+                }else {
+                  alert("Error: Passwords do not match!");
+                  form.pass.focus();
+                  return false;
+                }
+    
+                return true;
+              }
+    
+            </script>
+
+
+          <form action = "/register" class = "class1"  name = "register_form" onsubmit = "return checkForm(this);" method = "POST">
+          <span class = "cb" >First Name</span>  
+          <input class = "regtext" type = "text" name = "fname"id = "fname" required><br>
+          <span class = "cb" >Last Name</span> 
+          <input class = "regtext"type = "text" name = "lname"id = "lname" required><br>
+          <span class = "cb" >Email</span> 
+          <input class = "regtext" style = "margin-left:22%;"type = "email" name = "email"id = "email"  required><br>
+          <span class = "cb" >Password</span> 
+          <input class = "regtext" style = "margin-left:15.2%;"type = "password" name = "pass"id = "pass"  required><br>
+          <span class = "cb" >Confirm Password</span> 
+          <input class = "regtext" style = "margin-left:1%;" type = "password" name = "confirm"id = "confirm"required>
+          <input class = "regsubmit"type = "submit" value = "Register">
+
+      
+          
+          
+          </form>
+          </section>
+          <footer class="modal-card-foot" style= "background-color:#c5b2c4db;min-height: 75px;" >
+            
+            <button class="cancelreg" id = "cancel">Cancel</button>
+          </footer>
+        </div>
+      </div>
+
+
+      </div>
+
+
+      <script>
+         $("#showModal").click(function() {
+         $(".modal").addClass("is-active");  
+          });
+
+          $(".delete").click(function() {
+          $(".modal").removeClass("is-active");
+          });
+          $("#cancel").click(function() {
+          $(".modal").removeClass("is-active");
+          });     
+      </script>
+      <div class = "my_head">
+        youree in Shehacks
+        <br>
+        <span style = "margin-left:12%;position:absolute;"></span>
+      </div>
+    <!--  <div id = "sub_head">
+        You'd need us
+      </div>-->
+
+
+ </div>
+
+    <script src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"> </script>
+
+
+
+
+  </body>
+
+</html>

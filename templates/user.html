@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Our website</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link href="https://fonts.googleapis.com/css?family=Jura|Pacifico|Poiret+One|Quicksand|Righteous|Rosario|Sacramento|VT323" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jura|Poiret+One|Quicksand|Righteous|Rosario|VT323" rel="stylesheet">    <link href="https://fonts.googleapis.com/css?family=Audiowide|Julius+Sans+One|Montserrat|Notable|Orbitron|Oxygen|Righteous" rel="stylesheet">
+    <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/styles/style.css')}}">
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Julius+Sans+One|Montserrat|Notable|Orbitron|Oxygen|Righteous" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/styles/style.css') }}">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  </head>
+  <body>
+
+      <script>
+          $(window).on('load', function(){
+              if( {{ var1 }}==1){
+              $('#myModal').modal('show');
+              }
+          });
+      </script>
+      <!--sliding js-->
+      <script>
+      $(document).ready(function(){
+
+
+        $("#choose").click(function(){
+          $("#first").slideUp("slow", function(){
+            $("#second").slideDown("slow")
+          });
+        });
+
+         
+         $("#custom").click(function(){
+          $("#second").slideUp("slow", function(){
+            $("#first").slideDown("slow")
+          });
+        });
+
+
+      });
+      
+      
+      </script>
+
+    <div class = "container1" class = "class1">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div id = "flash"class="alert alert-dismissible flashalert" role="alert">
+        <button style="color:white;"type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        {{message}}
+        </div>
+      {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block body %}{% endblock %}
+      <script>
+        $(window).on('load', function(){
+            if( {{ var1 }}==1){
+            $('#myModal').modal('show');
+            }
+        });
+    </script>
+    </div>
+      <script type="text/javascript">
+  window.smoothScroll = function(target) {
+      var scrollContainer = target;
+      do { //find scroll container
+          scrollContainer = scrollContainer.parentNode;
+          if (!scrollContainer) return;
+          scrollContainer.scrollTop += 1;
+      } while (scrollContainer.scrollTop == 0);
+  
+      var targetY = 0;
+      do { //find the top of target relatively to the container
+          if (target == scrollContainer) break;
+          targetY += target.offsetTop;
+      } while (target = target.offsetParent);
+  
+      scroll = function(c, a, b, i) {
+          i++; if (i > 30) return;
+          c.scrollTop = a + (b - a) / 30 * i;
+          setTimeout(function(){ scroll(c, a, b, i); }, 20);
+      }
+      // start scrolling
+      scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+  }
+  </script>
+    <div id = "particles-js">
+
+        <div class = "navname" >
+                Welcome {{user}}
+       </div>
+      
+      
+       
+       <div class =  "leftnav">
+          <form action = "/dashboard" method= "POST">
+            <input class = "dashbutton" type = "submit"  value = "Go to Dashboard">
+            
+            </form>
+
+            <form action = "/logout" method="POST">
+              <input type = "submit" class = "logoutfromhome" value="Log Out">
+              </form>
+        <script>
+         $("#inputRedirect").click(function() {
+          
+          });
+        </script>
+       </div>
+       <div class = "rightnav">
+
+       </div>
+
+
+
+       <div class = "my_head">
+
+         Youre in she hacks<br>
+        <span style = "margin-left:12%;position:absolute;"></span>
+      </div>
+
+
+
+
+        <script src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"> </script>
+
+
+
+
+    
+</div>
+
+
+</body>
+</html>

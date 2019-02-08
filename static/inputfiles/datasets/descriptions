@@ -1,0 +1,148 @@
+1. Pima Indians diabetes - 
+
+The datasets consist of several medical predictor (independent) variables and one target (dependent) variable, Outcome. Independent variables include the number of pregnancies the patient has had, their BMI, insulin level, age, and so on.
+
+Columns - 
+Pregnancies : Number of times pregnant
+Glucose : Plasma glucose concentration a 2 hours in an oral glucose tolerance test
+BloodPressure : Diastolic blood pressure (mm Hg)
+SkinThickness : Triceps skin fold thickness (mm)
+Insulin : 2-Hour serum insulin (mu U/ml)
+BMI : Body mass index (weight in kg/(height in m)^2)
+DiabetesPedigreeFunction : Diabetes pedigree function
+Age : Age (years)
+Outcome : Class variable (0 or 1)
+
+2. Sonar data set - 
+Abstract: The task is to train a network to discriminate between sonar signals bounced off a metal cylinder and those bounced off a roughly cylindrical rock.
+
+Data Set Characteristics: Multivariate
+Number of Instances:208
+Area:Physical
+Attribute Characteristics:Real
+Number of Attributes:60
+Associated Tasks:Classification
+Number of Web Hits:99591
+
+Source:
+
+The data set was contributed to the benchmark collection by Terry Sejnowski, now at the Salk Institute and the University of California at San Deigo. The data set was developed in collaboration with R. Paul Gorman of Allied-Signal Aerospace Technology Center.
+
+Data Set Information:
+
+The file "sonar.mines" contains 111 patterns obtained by bouncing sonar signals off a metal cylinder at various angles and under various conditions. The file "sonar.rocks" contains 97 patterns obtained from rocks under similar conditions. The transmitted sonar signal is a frequency-modulated chirp, rising in frequency. The data set contains signals obtained from a variety of different aspect angles, spanning 90 degrees for the cylinder and 180 degrees for the rock.
+
+Each pattern is a set of 60 numbers in the range 0.0 to 1.0. Each number represents the energy within a particular frequency band, integrated over a certain period of time. The integration aperture for higher frequencies occur later in time, since these frequencies are transmitted later during the chirp.
+
+The label associated with each record contains the letter "R" if the object is a rock and "M" if it is a mine (metal cylinder). The numbers in the labels are in increasing order of aspect angle, but they do not encode the angle directly.
+
+3. Red Wine Quality
+
+Context
+
+This datasets is related to red variants of the Portuguese "Vinho Verde" wine. For more details, consult the reference [Cortez et al., 2009]. Due to privacy and logistic issues, only physicochemical (inputs) and sensory (the output) variables are available (e.g. there is no data about grape types, wine brand, wine selling price, etc.).
+
+The datasets can be viewed as classification or regression tasks. The classes are ordered and not balanced (e.g. there are much more normal wines than excellent or poor ones).
+
+This dataset is also available from the UCI machine learning repository, https://archive.ics.uci.edu/ml/datasets/wine+quality , I just shared it to kaggle for convenience. (If I am mistaken and the public license type disallowed me from doing so, I will take this down if requested.)
+
+Content
+
+For more information, read [Cortez et al., 2009]. Input variables (based on physicochemical tests): 1 - fixed acidity 2 - volatile acidity 3 - citric acid 4 - residual sugar 5 - chlorides 6 - free sulfur dioxide 7 - total sulfur dioxide 8 - density 9 - pH 10 - sulphates 11 - alcohol Output variable (based on sensory data): 12 - quality (score between 0 and 10)
+
+Tips
+
+What might be an interesting thing to do, is aside from using regression modelling, is to set an arbitrary cutoff for your dependent variable (wine quality) at e.g. 7 or higher getting classified as 'good/1' and the remainder as 'not good/0'. This allows you to practice with hyper parameter tuning on e.g. decision tree algorithms looking at the ROC curve and the AUC value. Without doing any kind of feature engineering or overfitting you should be able to get an AUC of .88 (without even using random forest algorithm)
+
+KNIME is a great tool (GUI) that can be used for this. 1 - File Reader (for csv) to linear correlation node and to interactive histogram for basic EDA. 2- File Reader to 'Rule Engine Node' to turn the 10 point scale to dichtome variable (good wine and rest), the code to put in the rule engine is something like this: - $quality$ > 6.5 => "good" - TRUE => "bad" 3- Rule Engine Node output to input of Column Filter node to filter out your original 10point feature (this prevent leaking) 4- Column Filter Node output to input of Partitioning Node (your standard train/tes split, e.g. 75%/25%, choose 'random' or 'stratified') 5- Partitioning Node train data split output to input of Train data split to input Decision Tree Learner node and 6- Partitioning Node test data split output to input Decision Tree predictor Node 7- Decision Tree learner Node output to input Decision Tree Node input 8- Decision Tree output to input ROC Node.. (here you can evaluate your model base on AUC value)
+
+Inspiration
+
+Use machine learning to determine which physiochemical properties make a wine 'good'!
+
+Acknowledgements
+
+This dataset is also available from the UCI machine learning repository, https://archive.ics.uci.edu/ml/datasets/wine+quality , I just shared it to kaggle for convenience. (I am mistaken and the public license type disallowed me from doing so, I will take this down at first request. I am not the owner of this dataset.
+
+Please include this citation if you plan to use this database: P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
+
+Relevant publication
+
+P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
+
+4.  Credit Card Fraud Detection
+Columns:-
+Time :Number of seconds elapsed between this transaction and the first transaction in the dataset
+V1
+V2
+V3
+V4
+V5
+V6
+V7
+V8
+V9
+V10
+V11
+V12
+V13
+V14
+V15
+V16
+V17
+V18
+V19
+V20
+V21
+V22
+V23
+V24
+V25
+V26
+V27
+V28
+Amount :- Transaction amount
+Class :- 1 for fraudulent transactions, 0 otherwise
+
+
+Content
+
+The datasets contains transactions made by credit cards in September 2013 by european cardholders. This dataset presents transactions that occurred in two days, where we have 492 frauds out of 284,807 transactions. The dataset is highly unbalanced, the positive class (frauds) account for 0.172% of all transactions.
+
+It contains only numerical input variables which are the result of a PCA transformation. Unfortunately, due to confidentiality issues, we cannot provide the original features and more background information about the data. Features V1, V2, ... V28 are the principal components obtained with PCA, the only features which have not been transformed with PCA are 'Time' and 'Amount'. Feature 'Time' contains the seconds elapsed between each transaction and the first transaction in the dataset. The feature 'Amount' is the transaction Amount, this feature can be used for example-dependant cost-senstive learning. Feature 'Class' is the response variable and it takes value 1 in case of fraud and 0 otherwise. 
+
+5.Bitcoin Historical Data
+Columns:
+Timestamp (in unix time
+Open- Bitcoin price in Currency units at time period open
+High- Highest Bitcoin price in Currency units during time period
+Low- Lowest Bitcoin price in Currency units during time period
+Close- Bitcoin price in Currency units at time period close
+Volume (BTC) - Volume of BTC transacted in time period
+Volume (Currency)- Volume of Currency transacted in time period
+Volume-weighted average price (VWAP)
+
+Context
+
+Bitcoin is the longest running and most well known cryptocurrency, first released as open source in 2009 by the anonymous Satoshi Nakamoto. Bitcoin serves as a decentralized medium of digital exchange, with transactions verified and recorded in a public distributed ledger (the blockchain) without the need for a trusted record keeping authority or central intermediary. Transaction blocks contain a SHA-256 cryptographic hash of previous transaction blocks, and are thus "chained" together, serving as an immutable record of all transactions that have ever occurred. As with any currency/commodity on the market, bitcoin trading and financial instruments soon followed public adoption of bitcoin and continue to grow. Included here is historical bitcoin market data at 1-min intervals for select bitcoin exchanges where trading takes place. 
+
+
+6. Glass Classificatio - 
+
+Identify glass type.
+
+Class Distribution: (out of 214 total instances) -- 163 Window glass (building windows and vehicle windows) -- 87 float processed 
+-- 70 building windows -- 17 vehicle windows -- 76 non-float processed -- 76 building windows -- 0 vehicle windows -- 51 Non-window glass -- 13 containers -- 9 tableware -- 29 headlamps
+
+Columns - 
+
+RI
+Na
+Mg
+Al
+Si
+K
+Ca
+Ba
+Fe
+Type
