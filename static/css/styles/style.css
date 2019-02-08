@@ -111,6 +111,11 @@ box-shadow:none;
   height: 30px;
   width: 35%;
 }
+.regdes{
+
+  height: 80px;
+  width: 50%;
+}
 .regsubmit{
   position: absolute;
   margin-top: 12%;
@@ -587,4 +592,54 @@ font-family: 'Quicksand', sans-serif;
   z-index: 1;
   padding-left: 2%;
   font-family: 'Quicksand', sans-serif;
+}
+
+/*-----------------------------------------------------------------------*/
+#tags{
+  float:left;
+  border:1px solid #ccc;
+  padding:5px;
+  font-family:Arial;
+}
+#tags > span{
+  cursor:pointer;
+  display:block;
+  float:left;
+  color:#fff;
+  background:#789;
+  padding:5px;
+  padding-right:25px;
+  margin:4px;
+}
+#tags > span:hover{
+  opacity:0.7;
+}
+#tags > span:after{
+ position:absolute;
+ content:"×";
+ border:1px solid;
+ padding:2px 5px;
+ margin-left:3px;
+ font-size:11px;
+}
+#tags > input{
+  background:#eee;
+  border:0;
+  margin:4px;
+  padding:7px;
+  width:auto;
+}
+
+.addP{
+  position: absolute;
+  margin-top: 9.5%;
+  z-index: 1;
+  margin-left: 15%;
+  background-color: white;
+  width: 130px;
+  font-size: 15px;
+  border: none;
+  padding: 10px;
+  height: 45px;
+  box-shadow: 4px 4px 8px #714d77;
 }
