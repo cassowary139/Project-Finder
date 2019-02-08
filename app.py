@@ -86,6 +86,62 @@ def register():
                     flash('Your Passwords Do not match')
         
         return redirect(url_for('index'))
+
+@app.route('/addProject', methods = ['GET' , 'POST'])
+def addProject():
+        if request.method == 'POST':
+            ti = str((request.form['title']))
+            de = str((request.form['description']))
+            ta = str((request.form['tags']))
+            pa = (request.form['option'])
+            user = session['userid']
+
+            #cp = (request.form['confirm'])
+            # if request.form['option1'] != "" :
+            #     pa = request.form['option1']
+            # elif request.form['option2'] != "" :
+            #     pa = request.form['option2']
+            # else :
+            #     pa = request.form['option3']
+
+            print("%s,%s,%s,%s" % (ti,de,ta,pa))
+            cur1 = mysql.connection.cursor()
+            if pa == "ongoing" : 
+                num = 1
+            elif pa == "past":
+                num = 0
+            else:
+                num = 2
+            
+            print(type(user))
+            print(type(ti))
+            print(type(de))
+            print(type(num))
+            print(type(ta))
+            
+            cur1.execute("INSERT INTO projects VALUES( 0, %s, %s, %s, %s,%s)", ( user , ti , de , num , ta))
+            mysql.connection.commit()
+            cur1.close()
+            # if result>0 :
+            #     flash('Email Already Exists! Register again!')
+            #     return redirect(url_for('index')) 
+            # else:
+            #     if pp == cp:
+            #         cur = mysql.connection.cursor()
+            #         password = sha256_crypt.encrypt(pp)
+            #         cur.execute("INSERT INTO users (id, fname, lname, email,pass) VALUES( 0, %s, %s, %s, %s)", ( ff , ll , ee , password))
+            #         mysql.connection.commit()
+            #         cur.close()
+
+            #         #win32api.MessageBox(0, 'hello', 'title')
+            #         flash('Registered Successfully! Please Login')
+            #         return redirect(url_for('index'))  
+            #     else:
+            #         flash('Your Passwords Do not match')
+        
+        return render_template('profile.html',f = session['fname'], l = session['lname'])
+
+
 @app.route('/confirm_email/<token>')
 def confirm_email(token):
     #try:
