@@ -5,7 +5,7 @@ from passlib.hash import sha256_crypt
 from werkzeug.utils import secure_filename
 import csv
 from flask_mail import Mail, Message
-import itsdangerous;
+import itsdangerous
 
 import pandas
 import matplotlib.pyplot as plt
@@ -16,9 +16,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
-import calendar;
-import time;
-import datetime;
+import calendar
+import time
+import datetime
 from flask_mysqldb import MySQL
 
 
@@ -42,12 +42,15 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/')
 def index():
-    session['userid'] = 500
-    session['logged_in'] = False
-    session['username'] = ""
-    session['fname'] = ""
-    session['lname'] = ""
-    return render_template('home.html',var0 = 0,var1 = 0,temp = 0)
+    #session['userid'] = 500
+    #session['logged_in'] = False
+    # session['username'] = ""
+    # session['fname'] = ""
+    # session['lname'] = ""
+    if session.get('logged_in') == True :
+        return render_template('profile.html',var = [],f = session['fname'], l = session['lname'])
+    else :
+        return render_template('home.html',var0 = 0,var1 = 0,temp = 0)
 
 ss = itsdangerous.URLSafeTimedSerializer('Secret!')
 
