@@ -48,7 +48,7 @@ def index():
     # session['fname'] = ""
     # session['lname'] = ""
     if session.get('logged_in') == True :
-        return render_template('profile.html',var = [],f = session['fname'], l = session['lname'])
+        return render_template('user.html',user = session['fname'],var1=0)
     else :
         return render_template('home.html',var0 = 0,var1 = 0,temp = 0)
 
@@ -85,6 +85,17 @@ def register():
                     flash('Your Passwords Do not match')
         
         return redirect(url_for('index'))
+
+@app.route('/results', methods = ['GET', 'POST'])
+def results():
+    if request.method == 'POST' : 
+        print(request.form)
+        se = str(request.form['search'])
+        ca = str(request.form['choices-single-defaul'])
+        return render_template('results.html', query = se, category = ca)
+    else :
+        return render_template('results.html')
+
 
 @app.route('/addProject', methods = ['GET' , 'POST'])
 def addProject():
@@ -203,6 +214,9 @@ def logout():
    
 @app.route('/dashboard', methods=['POST'])
 def dashboard():
+    if session['logged_in'] == False : 
+        return redirect(url_for('index'))
+        #return render_template('home.html',var0 = 0,var1 = 0,temp = 0)
     cur = mysql.connection.cursor()
     i = session['userid']
     result = cur.execute('''SELECT * FROM users where id =(%s)''',(i,))
