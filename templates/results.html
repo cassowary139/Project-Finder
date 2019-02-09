@@ -1,2 +1,11 @@
-<h1> We're in results page</h1>
-<p> Hello, {{query}}, {{category}} </p>
+<table border="1" cellpadding="5" cellspacing="5">
+    {% for row in data %}
+        <tr>
+            {%for item in row%}
+            <td>
+                {{item}}
+            </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>

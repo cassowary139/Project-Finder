@@ -96,9 +96,34 @@ def results():
         print(request.form)
         se = str(request.form['search'])
         ca = str(request.form['choices-single-defaul'])
-        return render_template('results.html', query = se, category = ca)
+        cur = mysql.connection.cursor()
+
+        if ca == 'Project':
+            sql = """SELECT * FROM projects where title like %s"""
+            result = cur.execute(sql, (('% ' + se + ' %',)))
+            #result = cur.execute('''SELECT * FROM projects where title like %% %s %%''',(se,))
+        elif ca == 'User' :
+            sql = """SELECT * FROM projects where user_id like %s"""
+            result = cur.execute(sql, (('%' + se + '%',)))
+            #result = cur.execute('''SELECT * FROM projects where user_id like %%%s%%''',(se,))
+        else :
+            sql = """SELECT * FROM projects where tags like %s"""
+            result = cur.execute(sql, (('%' + se + '%',)))
+            #result = cur.execute('''SELECT * FROM projects where tags like %%%s%%''',(se,))
+        rows = []
+        if result > 0 : 
+            data = cur.fetchall()
+            for row in cur:
+                new_row = []
+                new_row.append(row['title'])
+                new_row.append(row['description'])
+                new_row.append(row['user_id'])
+                rows.append(new_row)
+
+        return render_template('results.html', query = se, data = rows)
+
     else :
-        return render_template('results.html')
+        return render_template('results.html', data = [])
 
 
 @app.route('/addProject', methods = ['GET' , 'POST'])
