@@ -31,7 +31,10 @@
   
         <form action = "/logout" method="POST">
             <input type = "submit" class = "logout" value="Log Out">
-            </form>
+          </form>
+
+          <button style="margin-left:80%;"id = "eModal" class="logout" >Edit Profile</button> 
+
   
 
 </div>
@@ -43,12 +46,24 @@
         border-radius: 130px;" src = "../static/images/default.png">
     </div><br>
     <div class = "name">
-        {{f}}&nbsp;{{l}}
+        {{f}}&nbsp;{{l}}<br>
+        
     </div>
-    <form action = "/addProject" method = "POST">
+    <div class = "email">
+      {{email}}
+    </div>
+    <div>
+    
+      <a href = "{{github}}">Github Link</a> <br>
+      <a href = "{{linkedin}}">LinkedIn</a><br>
 
-   
-    </form>
+
+  </div>
+
+  <div>
+      {{skills}}
+  </div>
+
     <button id = "showModal" class="runbutton" >Add Project</button> <!--my register  modal button-->
 
    
@@ -57,7 +72,7 @@
 
 
 
-<div class="modal">
+<div class="modal" id=  "addPro">
   <div class="modal-background" style = "background-color: rgba(0,0,0,.7)"></div>
   <div class="modal-card">
     <header class="modal-card-head" style= "background-color:#c5b2c4db;">
@@ -75,7 +90,7 @@
     <span class = "cb" >Description</span> 
     <input class = "regdes" type = "text" name = "description"id = "description" required><br><br><br><br>
     <span class = "cb" >Add Tags</span> <br>
-    <input class ="regtext" type = "text" name = "tags" id = "tags" placeholder = "eg. html,image processing..."><br> 
+    <input style ="margin-left:30%;"class ="regdes" type = "text" name = "tags" id = "tags" placeholder = "eg. html,image processing..."><br> <br><br>
     <span class = "cb" >Status</span> 
     <input type="radio" name="option" value="ongoing"> <span class = "cb"> Ongoing</span>
     <input type="radio" name="option" value="past" ><span class = "cb">Past </span>
@@ -97,6 +112,51 @@
 
 
 
+
+
+<div class="modal" id = "editModal">
+    <div class="modal-background" style = "background-color: rgba(0,0,0,.7)"></div>
+    <div class="modal-card">
+      <header class="modal-card-head" style= "background-color:#c5b2c4db;">
+        <p class="formheadtext" style = "margin-left:5%;color:white;text-shadow: 4px 4px 4px #795880;">Edit Profile</p> 
+        <button style = "margin-left:60%;max-height:30px;min-height:30px; max-width:30px;min-width:30px;"class="delete" aria-label="close"></button>
+      </header>
+      <section style="background-color:#67446ddb;padding:30px;"class="modal-card-body">
+        <!-- Content ... -->
+  
+  
+  
+      <form action = "/editdetails" class = "class1"  name = "edit_form" method = "POST">
+      <span class = "cb" >Short Bio</span>  
+      <input class = "regdes" type = "text" name = "bio"id = "bio" required><br><br><br>
+      <span class = "cb" >Github Link</span> 
+      <input class = "regtext" type = "text" name = "git"id = "git" required><br><br>
+      <span class = "cb" >linkedIn Link</span> 
+      <input class = "regtext" type = "text" name = "lin"id = "lin" required><br><br> 
+      <span class = "cb" >Add Your Skills</span> <br> <br>
+      <input class ="regdes" type = "text" name = "skills" id = "skills" placeholder = "eg. html,image processing..."><br> <br><br>
+
+   
+  
+      <input class = "addP"type = "submit" value = "Edit Profile">
+  
+  
+      
+      
+      </form>
+      </section>
+      <footer class="modal-card-foot" style= "background-color:#c5b2c4db;min-height: 75px;" >
+        
+        <button class="cancelreg" id = "cancel">Cancel</button>
+      </footer>
+    </div>
+  </div>
+
+
+
+
+
+
 <div class="back">
   <div class = "recent" >Your Recent Activity</div>
 
@@ -113,7 +173,18 @@
     </thead>
     <tbody>
     
+      {% for temp in var %}
+      <tr>
+        <td>
+          {{temp[0]}}
+        </td>
+        <td>
+          {{temp[1]}}
+        </td>
 
+      </tr>
+
+      {%endfor%}
     
     </tbody>
   </table>
@@ -123,16 +194,30 @@
 </html>
 <script>
   $("#showModal").click(function() {
-  $(".modal").addClass("is-active");  
+  $("#addPro").addClass("is-active");  
    });
 
    $(".delete").click(function() {
-   $(".modal").removeClass("is-active");
+   $("#addPro").removeClass("is-active");
    });
    $(".cancelreg").click(function() {
-   $(".modal").removeClass("is-active");
+   $("#addPro").removeClass("is-active");
    });     
 </script>
+
+<script>
+    $("#eModal").click(function() {
+    $("#editModal").addClass("is-active");  
+     });
+  
+     $(".delete").click(function() {
+     $("#editModal").removeClass("is-active");
+     });
+     $(".cancelreg").click(function() {
+     $("#editModal").removeClass("is-active");
+     });     
+  </script>
+
 <script>
 
 $(function(){ // DOM ready

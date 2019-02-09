@@ -1,0 +1,172 @@
+<head><meta charset="utf-8" />
+
+ 
+    <title>Quanta</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link href="https://fonts.googleapis.com/css?family=Jura|Pacifico|Poiret+One|Quicksand|Righteous|Rosario|Sacramento|VT323" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jura|Poiret+One|Quicksand|Righteous|Rosario|VT323" rel="stylesheet">    <link href="https://fonts.googleapis.com/css?family=Audiowide|Julius+Sans+One|Montserrat|Notable|Orbitron|Oxygen|Righteous" rel="stylesheet">
+    <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/styles/style.css')}}">
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Julius+Sans+One|Montserrat|Notable|Orbitron|Oxygen|Righteous" rel="stylesheet">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles/style.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <!------ Include the above in your HEAD tag ---------->
+  <div class = "mynav">
+    
+          <form action = "/logout" method="POST">
+              <input type = "submit" class = "logout" value="Log Out">
+            </form>
+    
+  
+  </div>
+  <div class = "sidebar">
+      <div class = "container">
+          <img  style= "margin-left: 3%;
+          margin-top: 3%;
+          border: 10px solid #926798;
+          border-radius: 130px;" src = "../static/images/default.png">
+      </div><br>
+      <div class = "name">
+          {{f}}&nbsp;{{l}}<br>
+    </div>
+      <div class = "email">
+          {{email}}
+      </div>
+      <div>
+         <br>
+          <a href = "{{github}}">Github Link</a> <br>
+          <a href = "{{linkedin}}">LinkedIn</a><br>
+
+
+      </div>
+      <div>
+          {{skills}}
+      </div>
+      <form action = "/addProject" method = "POST">
+  
+     
+      </form>
+     
+  
+     
+  
+  </div>
+  
+  
+  
+  <div class="modal">
+    <div class="modal-background" style = "background-color: rgba(0,0,0,.7)"></div>
+    <div class="modal-card">
+      <header class="modal-card-head" style= "background-color:#c5b2c4db;">
+        <p class="formheadtext" style = "margin-left:5%;color:white;text-shadow: 4px 4px 4px #795880;">Register</p> 
+        <button style = "margin-left:60%;max-height:30px;min-height:30px; max-width:30px;min-width:30px;"class="delete" aria-label="close"></button>
+      </header>
+      <section style="background-color:#67446ddb;padding:30px;"class="modal-card-body">
+        <!-- Content ... -->
+  
+  
+  
+      <form action = "/addProject" class = "class1"  name = "project_form" onsubmit = "return checkForm(this);" method = "POST">
+      <span class = "cb" >Title</span>  
+      <input class = "regtext" type = "text" name = "title"id = "title" required><br><br><br>
+      <span class = "cb" >Description</span> 
+      <input class = "regdes" type = "text" name = "description"id = "description" required><br><br><br><br>
+      <span class = "cb" >Add Tags</span> <br>
+      <input class ="regtext" type = "text" name = "tags" id = "tags" placeholder = "eg. html,image processing..."><br> 
+      <span class = "cb" >Status</span> 
+      <input type="radio" name="option" value="ongoing"> <span class = "cb"> Ongoing</span>
+      <input type="radio" name="option" value="past" ><span class = "cb">Past </span>
+      <input type="radio" name="option" value="future Idea"> <span class = "cb" >Future</span><br>
+  
+      <input class = "addP"type = "submit" value = "Add Project">
+  
+  
+      
+      
+      </form>
+      </section>
+      <footer class="modal-card-foot" style= "background-color:#c5b2c4db;min-height: 75px;" >
+        
+        <button class="cancelreg" id = "cancel">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  
+  
+  
+  <div class="back">
+    <div class = "recent" >Your Recent Activity</div>
+  
+    <table class="table table-striped">
+      <thead class = "tablehead">
+   
+        <tr>
+          <th>Id</th>
+          <th >Date & Time</th>
+          <th>Num of Parameters</th>
+          <th>Dataset Used</th>
+          <th>Accuracy</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+  
+      
+      </tbody>
+    </table>
+  </div>
+  
+  </body>
+  </html>
+  <script>
+    $("#showModal").click(function() {
+    $(".modal").addClass("is-active");  
+     });
+  
+     $(".delete").click(function() {
+     $(".modal").removeClass("is-active");
+     });
+     $(".cancelreg").click(function() {
+     $(".modal").removeClass("is-active");
+     });     
+  </script>
+  <script>
+  
+  $(function(){ // DOM ready
+  
+    // ::: TAGS BOX
+  
+    $("#tags input").on({
+      focusout : function() {
+        var txt = this.value.replace(/[^a-z0-9\+\-\.\#]/ig,''); // allowed characters
+        if(txt) $("<span/>", {text:txt.toLowerCase(), insertBefore:this});
+        this.value = "";
+      },
+      keyup : function(ev) {
+        // if: comma|enter (delimit more keyCodes with | pipe)
+        if(/(188|13)/.test(ev.which)) $(this).focusout(); 
+      }
+    });
+    $('#tags').on('click', 'span', function() {
+      if(confirm("Remove "+ $(this).text() +"?")) $(this).remove(); 
+    });
+  
+  });
+  
+  </script>
