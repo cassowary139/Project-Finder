@@ -99,7 +99,7 @@ def results():
             result = cur.execute(sql, (('% ' + se + ' %',)))
             #result = cur.execute('''SELECT * FROM projects where title like %% %s %%''',(se,))
         elif ca == 'User' :
-            sql = """SELECT * FROM projects where user_id like %s"""
+            sql = """SELECT * FROM users where user_id like %s"""
             result = cur.execute(sql, (('%' + se + '%',)))
             #result = cur.execute('''SELECT * FROM projects where user_id like %%%s%%''',(se,))
         else :
@@ -107,13 +107,27 @@ def results():
             result = cur.execute(sql, (('%' + se + '%',)))
             #result = cur.execute('''SELECT * FROM projects where tags like %%%s%%''',(se,))
         rows = []
+
         if result > 0 : 
             data = cur.fetchall()
             for row in cur:
                 new_row = []
                 new_row.append(row['title'])
                 new_row.append(row['description'])
+                uid = row['user_id']
+                cur1 = mysql.connection.cursor()
+                r = cur1.execute('''SELECT * FROM users where id = (%s)''',(uid,))
+                res = cur1.fetchone()
+                nm = str(res['fname']) + " " + str(res['lname'])
+                cur1.close()
+                new_row.append(nm)
                 new_row.append(row['user_id'])
+                if row['stat'] == 0:
+                    new_row.append('Past')
+                elif row['stat'] == 1 :
+                    new_row.append('Ongoing')
+                else : 
+                    new_row.append('Future')
                 rows.append(new_row)
 
         return render_template('results.html', query = se, data = rows)
