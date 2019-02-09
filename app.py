@@ -165,7 +165,7 @@ def addProject():
             mysql.connection.commit()
             cur1.close()
         
-        return render_template('profile.html',f = session['fname'], l = session['lname'])
+        return redirect(url_for('dashboard'))
 
 @app.route('/editdetails', methods = ['GET' , 'POST'])
 def editdetails():

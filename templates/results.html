@@ -1,11 +1,172 @@
-<table border="1" cellpadding="5" cellspacing="5">
-    {% for row in data %}
-        <tr>
-            {%for item in row%}
-            <td>
-                {{item}}
-            </td>
-            {% endfor %}
-        </tr>
-    {% endfor %}
-</table>
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Our website</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link href="https://fonts.googleapis.com/css?family=Jura|Pacifico|Poiret+One|Quicksand|Righteous|Rosario|Sacramento|VT323" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jura|Poiret+One|Quicksand|Righteous|Rosario|VT323" rel="stylesheet">    <link href="https://fonts.googleapis.com/css?family=Audiowide|Julius+Sans+One|Montserrat|Notable|Orbitron|Oxygen|Righteous" rel="stylesheet">
+    <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/styles/style.css')}}">
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+
+    <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Julius+Sans+One|Montserrat|Notable|Orbitron|Oxygen|Righteous" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/styles/style.css') }}">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/styles/search.css">
+
+
+
+  </head>
+  <body>
+
+
+
+    <div class = "container1" class = "class1">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div id = "flash"class="alert alert-dismissible flashalert" role="alert">
+        <button style="color:white;"type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        {{message}}
+        </div>
+      {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block body %}{% endblock %}
+
+    </div>
+
+    <div id = "particles-js">
+
+        <div class = "navname" >
+                Welcome {{user}}
+       </div>
+      
+      
+       
+       <div class =  "leftnav">
+          <form action = "/dashboard" method= "POST">
+            <input class = "dashbutton" type = "submit"  value = "Go to Dashboard">
+            
+            </form>
+
+            <form action = "/logout" method="POST">
+              <input type = "submit" class = "logoutfromhome" value="Log Out">
+              </form>
+        <script>
+         $("#inputRedirect").click(function() {
+          
+          });
+        </script>
+       </div>
+       <div class = "rightnav">
+
+       </div>
+
+
+
+
+      
+
+
+        <script src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"> </script>
+
+
+        <div class="s003" style = "margin-top:-10%">
+          <form action = "{{ url_for('results') }}" method = "post" id = "searching">
+            <div class="inner-form">
+              <div class="input-field first-wrap">
+                <div class="input-select">
+                  <select data-trigger="" name="choices-single-defaul">
+                    <option placeholder="">Category</option>
+                    <option>Project</option>
+                    <option>User</option>
+                    <option>Tags</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-field second-wrap">
+                <input id="search" name="search" type="text" placeholder="Enter Keywords?" />
+              </div>
+              <div class="input-field third-wrap">
+                <button class="btn-search" type="button" onclick="search_query()">
+                  <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="backres">
+                <div class = "recent" >Found Projects</div>
+              
+                <table class="table table-striped">
+                  <thead class = "tablehead">
+               
+                    <tr>
+                      <th>Title</th>
+                      <th >Description</th>
+                      <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in data %}
+                    <tr>
+                        {%for item in row%}
+                        <td>
+                            {{item}}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
+      
+        <script type=text/javascript>
+          function search_query() {
+            document.getElementById("searching").submit();
+          }
+          </script>
+        
+        <script type=text/javascript src="{{
+        url_for('static', filename='static/js/extention/choices.js') }}"></script>
+        
+        <script>
+          const choices = new Choices('[data-trigger]',
+          {
+            searchEnabled: false,
+            itemSelectText: '',
+          });
+        
+        </script>
+
+    
+</div>
+
+
+
+
+</body>
+</html>
