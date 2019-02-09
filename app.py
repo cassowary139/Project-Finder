@@ -310,7 +310,7 @@ def profile(userid):
     if userid != session['userid'] :
         return render_template('otherprofile.html',var = par,f = row['fname'], l = row['lname'],email = em,bio = bio,git = git,linkedin = linkedin,skill =sk )
     else :
-        return render_template('profile.html',var = par,f = session['fname'], l = session['lname'],email = em,bio = bio,git = git,linkedin = linkedin,skill =sk)
+        return redirect(url_for('dashboard'))
 
 '''@app.route('/dashboard', methods=['POST'])
 def dashboard():
