@@ -44,6 +44,8 @@ height : 100% ;
   z-index :-1;
   
 }
+
+
 .nav{
   min-width : 7%;
   
@@ -142,7 +144,7 @@ box-shadow:none;
   background-color: white;
   width: 130px;
   font-size: 15px;
-  margin-left: 30%;
+  margin-left: 45%;
   border: none;
   padding: 10px;
 
@@ -642,4 +644,15 @@ font-family: 'Quicksand', sans-serif;
   padding: 10px;
   height: 45px;
   box-shadow: 4px 4px 8px #714d77;
+}
+
+.email{
+  font-size: 18px;
+  color: #fceeff;
+  margin-left: 15%;
+
+  font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+  max-width: 85%;
+  width: 85%;
 }
