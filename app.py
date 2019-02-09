@@ -298,17 +298,33 @@ def profile(userid):
     git = row['github']
     linkedin = row['linkedin']
     sk = row['skills']
+    fn = row['fname']
+    ln = row['lname']
     cur.close()
+    cur1 = mysql.connection.cursor()
+    result = cur1.execute('''SELECT * FROM projects where user_id =(%s)''',(userid,))
+    results = cur1.fetchall()
+    par =[]
 
+    for prow in results:
+        res = []
+        res.append(prow['title'])
+        res.append(prow['description'])
+        if(prow['stat'] == 0):
+            res.append('Past')
+        elif(prow['stat'] == 1):
+            res.append('Ongoing')
+        else :
+            res.append('Future Idea')
+        par.append(res)
 
 
     
     ctr = 0
-    par = []
     print(userid)
     print(session['userid'])
     if userid != session['userid'] :
-        return render_template('otherprofile.html',var = par,f = row['fname'], l = row['lname'],email = em,bio = bio,git = git,linkedin = linkedin,skill =sk )
+        return render_template('otherprofile.html',var = par,f = fn, l = ln,email = em,bio = bio,git = git,linkedin = linkedin,skill =sk )
     else :
         return redirect(url_for('dashboard'))
 

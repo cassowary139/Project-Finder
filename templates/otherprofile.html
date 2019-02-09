@@ -111,26 +111,39 @@
   
   
   <div class="back">
-    <div class = "recent" >Your Recent Activity</div>
-  
-    <table class="table table-striped">
-      <thead class = "tablehead">
-   
-        <tr>
-          <th>Id</th>
-          <th >Date & Time</th>
-          <th>Num of Parameters</th>
-          <th>Dataset Used</th>
-          <th>Accuracy</th>
-        </tr>
-      </thead>
-      <tbody>
+        <div class = "recent" >Your Projects</div>
       
-  
+        <table class="table table-striped">
+          <thead class = "tablehead">
+       
+            <tr>
+              <th>Title</th>
+              <th >Description</th>
+              <th>Status</th>
       
-      </tbody>
-    </table>
-  </div>
+            </tr>
+          </thead>
+          <tbody>
+          
+            {% for temp in var %}
+            <tr>
+              <td>
+                {{temp[0]}}
+              </td>
+              <td>
+                {{temp[1]}}
+              </td>
+              <td>
+                  {{temp[2]}}
+                </td>
+      
+            </tr>
+      
+            {%endfor%}
+          
+          </tbody>
+        </table>
+      </div>
   
   </body>
   </html>
