@@ -42,11 +42,6 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/')
 def index():
-    #session['userid'] = 500
-    #session['logged_in'] = False
-    # session['username'] = ""
-    # session['fname'] = ""
-    # session['lname'] = ""
     if session.get('logged_in') == True :
         return render_template('user.html',user = session['fname'],var1=0)
     else :
